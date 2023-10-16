@@ -13,7 +13,7 @@ async function searchReviews() {
 
     var avaliacoes = json.result;
 
-    await renderReviews(avaliacoes);
+    renderReviews(avaliacoes);
 }
 
 // Path: src/avaliacao.js
@@ -26,6 +26,6 @@ function renderReviews(avaliacoes) {
         var insta = avaliacao.insta;
         var descricao = avaliacao.descricao;
         console.log(nome);   
-            
+
     });
 }
