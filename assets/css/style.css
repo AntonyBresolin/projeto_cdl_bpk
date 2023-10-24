@@ -466,17 +466,26 @@ span{
     align-items: center;
 }
 
-.caixas{
+
+.carousel-mask {
+    overflow: hidden;
+    width: 1000px; /* Largura para 4 professores (250px cada + gap) */
+    margin: 0 auto; /* Esta linha centraliza o .carousel-mask horizontalmente */
+}
+
+.caixas {
     font-size: var(--fs-18);
     font-weight: var(--fw-500);
     color: var(--blue);
     display: flex;
-    justify-content: center;
+    justify-content: start; /* Para iniciar a exibição a partir do início */
     gap: 2rem;
-    flex-wrap: wrap;
     align-items: center;
     min-height: 400px;
+    transition: transform 0.5s;
+    width: max-content; /* Permite que a div cresça com seu conteúdo */
 }
+
 
 .img-profile{
     width: 40%;
@@ -493,6 +502,34 @@ span{
     justify-content: center;
     align-items: center;
     flex-direction: column;
+}
+
+
+.carousel-controls {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.carousel-controls button {
+    background-color: #eee;
+    border: none;
+    padding: 10px 20px;
+    margin: 0 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.carousel-controls button:hover {
+    background-color: #ddd;
+}
+
+.carousel-container {
+    overflow: hidden;
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }
 
 .box2{
