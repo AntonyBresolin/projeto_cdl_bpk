@@ -54,12 +54,8 @@
                 <form action="subscribe">
                     <input type="text" placeholder="Nome completo">
                     <input type="email" placeholder="E-mail">
-                    <select name="cursos" id="cursos">
+                    <select name="cursos" id="cursos_select">
                         <option value="selecione">Escolha um Curso</option>
-                        <option value="ingles">Inglês</option>
-                        <option value="portugues">Português</option>
-                        <option value="espanhol">Espanhol</option>
-                        <option value="frances">Francês</option>
                     </select>
 
                     <input type="submit" value="ENVIAR">
@@ -83,11 +79,8 @@
                         </div>
                         <div class="card-content">
                             <h2 class="name">Cursos Disponíveis</h2>
-                            <p class="description">
-                                •Inglês <br>
-                                •Espanhol <br>
-                                •Francês <br>
-                                •Português
+                            <p class="description" id="courses_avaliable">
+                               
                             </p>
                             <form action="https://escolas.domusbrasilis.com.br">
                             <button class="button-slide">
@@ -478,11 +471,7 @@
 
                     <div class="footer-col">
                         <h4>Cursos</h4>
-                        <ul>
-                            <li><a href="#">Espanhol</a></li>
-                            <li><a href="#">Inglês</a></li>
-                            <li><a href="#">Francês</a></li>
-                            <li><a href="#">Português</a></li>
+                        <ul id="footer_courses">
                         </ul>
                     </div>
 
@@ -516,6 +505,7 @@
     <script src="./src/goToTop.js"></script>
     <script src="./src/accordionEvent.js"></script>
     <script src="./src/teachers.js"></script>
+    <script src="./src/courses.js"></script>
 </body>
 
 </html>
