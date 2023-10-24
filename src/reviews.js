@@ -3,13 +3,10 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 async function searchReviews() {
-
-
     try {
         var result = await fetch("https://660q5f5r.api.sanity.io/v2021-10-21/data/query/production?query=*%5B_type+%3D%3D+%22avaliacao%22%5D%7B%0A++nome%2C+nota%2C+curso%2C+%22image%22%3A+imagem.asset-%3Eurl+%2Cdescricao%0A%7D", {
             method: 'get',
         });
-
         var json = await result.json();
     } catch (error) {
         console.error("Ocorreu um erro ao buscar os dados da avaliação.", error);
@@ -18,14 +15,10 @@ async function searchReviews() {
 
     var avaliacoes = json.result;
 
-    console.log("teste");
     renderReviews(avaliacoes);
 }
 
-// Path: src/avaliacao.js
-
 function renderReviews(avaliacoes) {
-
     function shuffle(array) {
         for (let i = array.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
@@ -39,56 +32,92 @@ function renderReviews(avaliacoes) {
     // Pegar as primeiras 4 avaliações do array embaralhado
     const avaliacoesAleatorias = avaliacoes.slice(0, 4);
 
+    const container = document.querySelector("#testimonials .testimonial-box-container");
+    container.innerHTML = ''; // Limpar container
+
     avaliacoesAleatorias.forEach((avaliacao, index) => {
-        var image = avaliacao.image;
-        var nome = avaliacao.nome;
-        var curso = avaliacao.curso;
-        var nota = avaliacao.nota;
-        var descricao = avaliacao.descricao;
+        let box = document.createElement('div');
+        box.className = "testimonial-box";
+        box.id = `review-${index + 1}`;
 
-        const imageDom = document.querySelector(`#review-${index + 1} .box-top .profile .profile-img img`);
-        const nomeDom = document.querySelector(`#review-${index + 1} .box-top .profile .name-user strong`);
-        const cursoDom = document.querySelector(`#review-${index + 1} .box-top .profile .name-user span`);
-        const notaDom = document.querySelector(`#review-${index + 1} .box-top .reviews .box-estrela`);
-        const descricaoDom = document.querySelector(`#review-${index + 1} .client-comment p`);
+        let topDiv = document.createElement('div');
+        topDiv.className = "box-top";
 
+        let profileDiv = document.createElement('div');
+        profileDiv.className = "profile";
 
+        let imgDiv = document.createElement('div');
+        imgDiv.className = "profile-img";
 
-        if (imageDom) {
-            imageDom.src = image;
-        }
-        if (nomeDom) {
-            nomeDom.textContent = nome;
-        }
-        if (cursoDom) {
-            cursoDom.textContent = curso;
-        }
-        if (descricaoDom) {
-            descricaoDom.textContent = descricao;
-        }
-        if (notaDom) {
-            notaDom.innerHTML = "";
-            if (nota % 2 == 0) {
-                nota = nota / 2;
-                for (let i = 0; i < nota; i++) {
-                    notaDom.innerHTML += `<i class="fas fa-star"></i>`;
-                }
-            } else {
-                nota = (nota - 1) / 2;
-                for (let i = 0; i < nota; i++) {
-                    notaDom.innerHTML += `<i class="fas fa-star"></i>`;
-                }
-                notaDom.innerHTML += `<i class="fas fa-star-half-stroke"></i>`;
-                for(let i = 0; i < 4 - nota; i++){
-                    notaDom.innerHTML += `<i class="far fa-star"></i>`;
-                } 
+        let image = document.createElement('img');
+        image.src = avaliacao.image;
+        image.alt = "imagem usuário";
+
+        imgDiv.appendChild(image);
+        profileDiv.appendChild(imgDiv);
+
+        let nameUserDiv = document.createElement('div');
+        nameUserDiv.className = "name-user";
+
+        let nomeStrong = document.createElement('strong');
+        nomeStrong.textContent = avaliacao.nome;
+
+        let cursoSpan = document.createElement('span');
+        cursoSpan.textContent = `@${avaliacao.curso}`;
+
+        nameUserDiv.appendChild(nomeStrong);
+        nameUserDiv.appendChild(cursoSpan);
+
+        profileDiv.appendChild(nameUserDiv);
+
+        topDiv.appendChild(profileDiv);
+
+        let reviewsDiv = document.createElement('div');
+        reviewsDiv.className = "reviews";
+
+        let boxEstrelaDiv = document.createElement('div');
+        boxEstrelaDiv.className = "box-estrela";
+
+        // Adicionar estrelas de acordo com a nota
+        let nota = avaliacao.nota;
+        if (nota % 2 == 0) {
+            nota = nota / 2;
+            for (let i = 0; i < nota; i++) {
+                let star = document.createElement('i');
+                star.className = "fas fa-star";
+                boxEstrelaDiv.appendChild(star);
+            }
+        } else {
+            nota = (nota - 1) / 2;
+            for (let i = 0; i < nota; i++) {
+                let star = document.createElement('i');
+                star.className = "fas fa-star";
+                boxEstrelaDiv.appendChild(star);
+            }
+            let halfStar = document.createElement('i');
+            halfStar.className = "fas fa-star-half-stroke";
+            boxEstrelaDiv.appendChild(halfStar);
+            for(let i = 0; i < 4 - nota; i++){
+                let emptyStar = document.createElement('i');
+                emptyStar.className = "far fa-star";
+                boxEstrelaDiv.appendChild(emptyStar);
             }
         }
+
+        reviewsDiv.appendChild(boxEstrelaDiv);
+        topDiv.appendChild(reviewsDiv);
+
+        box.appendChild(topDiv);
+
+        let clientCommentDiv = document.createElement('div');
+        clientCommentDiv.className = "client-comment";
+
+        let commentP = document.createElement('p');
+        commentP.textContent = avaliacao.descricao;
+
+        clientCommentDiv.appendChild(commentP);
+        box.appendChild(clientCommentDiv);
+
+        container.appendChild(box);
     });
 }
-
-function setStars(stars) {
-    
-
-}
-
