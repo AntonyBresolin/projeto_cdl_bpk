@@ -1,3 +1,7 @@
+document.addEventListener("DOMContentLoaded", function () {
+    searchNews();
+});
+
 async function searchNews() {
 
     try {
@@ -17,9 +21,21 @@ async function searchNews() {
 }
 
 function renderNews(news) {
-    news.forEach(news => {
+    news.slice(-6).reverse()
+    .forEach(function(news) {
         var image = news.image;
-        var link = news.link;
-        console.log(image, link);
-    })
+        var links = news.link;
+
+        var newsImg = document.querySelector("#redes_img");
+        var link = document.createElement("a");
+        link.href = links;
+        link.target = "_blank";
+        
+        var img = document.createElement("img");
+        img.src = image;
+        img.alt = "Imagem da noticia";
+
+        link.appendChild(img);
+        newsImg.appendChild(link);
+    });
 }
