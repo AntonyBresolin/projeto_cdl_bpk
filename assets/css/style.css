@@ -350,8 +350,26 @@ span{
     color: var(--blue);
     font-weight: var(--fw-400);
 }
+
+.redes-img{
+    width: 200%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    padding-right: 10%;
+    gap: .5%;
+}
+.redes-img a {
+    display: flex;
+    height: 100%;
+}
 .redes-img img{
-    width: 25%;
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+    max-height: 210px;
+    object-fit: cover;
 }
 
 /* TERCEIRA PAGINA (METODOLOGIA) */
