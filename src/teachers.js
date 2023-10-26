@@ -63,22 +63,19 @@ function renderTeachers(professores) {
 
 
     nextBtn.addEventListener('click', () => {
-        if (currentSlide < professores.length - 4) {
-            currentSlide += 4;
+        if (currentSlide < professores.length - 1) {
+            currentSlide += 1;
         } else {
-            currentSlide = 0; // Volta para o início
+            currentSlide = 0;
         }
         updateCarousel();
     });
     
     prevBtn.addEventListener('click', () => {
-        if (currentSlide >= 4) {
-            currentSlide -= 4;
-        } else {
-            currentSlide = professores.length - 4; // Vai para o último slide válido
-            if (professores.length % 4 !== 0) { // Se não houver um múltiplo exato de 4 professores
-                currentSlide = professores.length - (professores.length % 4);
-            }
+        if (currentSlide == 0) {
+            currentSlide = professores.length - 1; // Vai para o último slide válido
+        }  else {
+            currentSlide -= 1;
         }
         updateCarousel();
     });

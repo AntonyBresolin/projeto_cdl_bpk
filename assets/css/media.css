@@ -1,23 +1,33 @@
-@media screen and (max-width:1060){
+@media screen and (min-width:2500px) {
+    body,
+    .accordion__answer > p {
+        font-size: var(--fs-20);
+    }
+
+    .wrapper-metodologia {
+        padding: 0;
+    }
+
+    .redes-img a img{
+        max-height: 450px;
+    }
+
+    .name-user strong,
+    .accordion__question > p,
+    .footer-col h4 {
+        font-size: var(--fs-24);
+    }
+
+}
+
+@media screen and (max-width:1060px){
     .testimonial-box{
         width: 45%;
         padding: 10px;
     }
-}
 
-@media screen and (max-width:850px){
-    .redes{
-        flex-direction: column;
-        gap: 20px;
-    }
-
-    .redes-text{
-        font-size: 10px;
-        color: var(--blue);
-    }
-    
-    .descrição-redes{
-        font-size: 20px;
+    footer {
+        padding-left: 7%;
     }
 }
 
@@ -34,9 +44,33 @@
     }
 }
 
+@media screen and (max-width:850px){
+    .redes{
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .redes-text{
+        color: var(--blue);
+    }
+
+    .descrição-redes h3{
+        font-size: var(--fs-20);
+    }
+
+    .redes-img {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+        width: 100%;
+        padding: 0;
+    }
+    
+}
+
+
 @media screen and (max-width:790px){
     .testimonial-box{
-        width:100%
+        width:80%
     }
     .testimonial-heading h1{
         font-size: var(--fs-28);
@@ -77,9 +111,7 @@
 }
 
 @media screen and (max-width: 574px){
-    .footer-col{
-        width: 100%;
-    }
+
 }
 
 ::selection{
@@ -104,8 +136,6 @@
     .main__text .main__text-footer div{
         margin: 5px 0 !important;
     }
-}
-@media (max-width:500px){
     .main__text h1{
         font-size: 3em;
     }
