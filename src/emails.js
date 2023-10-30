@@ -23,7 +23,6 @@ function saveEmails(name, email, curso) {
             `Requisitante: ${name}\nEmail: ${email}\nOlá, desejo tirar dúvidas sobre o curso de ${curso}`;
     
         window.location.href = `mailto:${destinatario}?subject=${encodeURIComponent(assunto)}&body=${encodeURIComponent(mensagem)}`;
-    
 
     } catch (error) {
         alert("Ocorreu um erro ao salvar os dados do form.", error);
