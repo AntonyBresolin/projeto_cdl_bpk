@@ -11,33 +11,19 @@ form.addEventListener("submit", (e) => {
     saveEmails(name, email, curso);
 });
 
-async function saveEmails(name, email, curso) {
+function saveEmails(name, email, curso) {
     if (curso === "selecione") {
         alert("Selecione um curso")
         return;
     }
     try {
-    var result = await fetch("https://660q5f5r.api.sanity.io/v2023-10-30/data/mutate/production", {
-            method: 'post',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': 'Bearer skq9dvuHQxxIazqpZcPXDEzDBxN9f3ubdDgp1mP2TxE0g21GUL9Ydv1SS5lx9gptn26HxvUPMJ5ZxbUqBf7EXbWJLTGx2T8aASqdjtJWR7VEiVOf2cjeoGhG1xFqoi7GiMTs39C8onrnZPTZhoNoQ5RETUn9s6BrzS3WaZPviXGm1XtIkQI4'
-            },
-            body: JSON.stringify({
-                "mutations": [
-                    {
-                        "create": {
-                            "_type": "emails",
-                            "nome": name,
-                            "email": email,
-                            "curso": curso
-                        }
-                    }
-                ]
-            })
-            }
-        ,);
-            console.log(result)
+        const destinatario = "centrodelinguas@bpkedu.com";
+        const assunto = `Contato pelo Site`;
+        const mensagem =
+            `Requisitante: ${name}\nEmail: ${email}\nOlá, desejo tirar dúvidas sobre o curso de ${curso}`;
+    
+        window.location.href = `mailto:${destinatario}?subject=${encodeURIComponent(assunto)}&body=${encodeURIComponent(mensagem)}`;
+    
 
     } catch (error) {
         alert("Ocorreu um erro ao salvar os dados do form.", error);
@@ -52,3 +38,15 @@ async function saveEmails(name, email, curso) {
 
 
 
+
+function sendMail(event){
+    event.preventDefault();
+    const destinatario = "centrodelinguas@bpkedu.com";
+    const assunto = `Contato pelo Site`;
+    const select = document.querySelector('#cursos-select');
+    const option = select.options[select.selectedIndex].value;
+    const mensagem =
+        `Requisitante: ${document.getElementById('name').value}\nEmail: ${document.getElementById('mail').value}\nOlá, desejo tirar dúvidas sobre o curso de ${option.textContent}`;
+
+    window.location.href = `mailto:${destinatario}?subject=${encodeURIComponent(assunto)}&body=${encodeURIComponent(mensagem)}`;
+}
