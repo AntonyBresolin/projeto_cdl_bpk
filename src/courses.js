@@ -22,7 +22,7 @@ function renderCourses(cursos) {
     cursos.forEach((curso, index) => {
         var nome = curso.nome_curso;
         const option = document.createElement('option');
-        const course = document.createElement('option');
+        const course = document.createElement('li');
         const footerLi = document.createElement('li');
         const footerA = document.createElement('a');
 
