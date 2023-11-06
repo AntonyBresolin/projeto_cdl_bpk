@@ -305,6 +305,10 @@ span{
     font-size: var(--fs-14);
     color: var(--blue);
     font-weight: var(--fw-500);
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    column-gap: 2rem;
+    padding-bottom: 10px;
 }
 
 .button-slide{
