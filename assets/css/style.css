@@ -715,6 +715,7 @@ span{
 .layout {
     width: 80%;
     margin: auto;
+    margin-top: 20px;
   }
   .accordion {
     padding: 10px;

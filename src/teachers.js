@@ -22,9 +22,20 @@ async function searchTeachers() {
     renderTeachers(professores);
 }
 
+
 // Path: src/teachers.js
 
 function renderTeachers(professores) {
+
+    if (professores.length < 1) {
+        const title = document.querySelector("#carousel")
+        const p = document.createElement("h2")
+        p.innerHTML = 'Sem professores no momento'
+        const controls = document.querySelector("#carousel-controls")
+        controls.style.cssText = 'opacity: 0;'
+        title.appendChild(p)
+        return
+    }
     const carousel = document.getElementById('carousel');
     carousel.innerHTML = ""; // Limpa conteúdo
 

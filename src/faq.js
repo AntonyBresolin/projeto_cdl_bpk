@@ -18,6 +18,14 @@ async function searchFaq() {
     renderFaqs(faqs);
 }
 function renderFaqs(faqs) {
+    if (faqs.length < 1) {
+        const title = document.querySelector("#layout")
+        const p = document.createElement("h2")
+        p.innerHTML = 'Sem perguntas frequentes no momento'
+        title.appendChild(p)
+        return
+    }
+    
     faqs.forEach(faq => {
         var pergunta = faq.pergunta;
         var resposta = faq.resposta;
