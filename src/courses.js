@@ -19,8 +19,8 @@ function renderCourses(cursos) {
     const coursesAvaliable = document.querySelector('#cursos_select');
     const optionsCourses = document.querySelector('#courses_avaliable');
     const footerCourses = document.querySelector('#footer_courses');
-    cursos.forEach((curso, index) => {
-        var nome = curso.nome_curso;
+    for (let i = 0; i < 10; i++) {
+        var nome = cursos[i].nome_curso;
         const option = document.createElement('option');
         const course = document.createElement('li');
         const footerLi = document.createElement('li');
@@ -44,5 +44,5 @@ function renderCourses(cursos) {
             coursesAvaliable.appendChild(option);
         }
         
-    });
+    };
 }

@@ -19,6 +19,13 @@ async function searchReviews() {
 }
 
 function renderReviews(avaliacoes) {
+    if (avaliacoes.length < 1) {
+        const title = document.querySelector("#testimonials")
+        const p = document.createElement("h2")
+        p.innerHTML = 'Sem avaliações no momento'
+        title.appendChild(p)
+        return
+    }
     function shuffle(array) {
         for (let i = array.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
