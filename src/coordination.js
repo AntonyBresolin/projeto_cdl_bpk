@@ -11,7 +11,7 @@ async function searchCoordination() {
 
         var json = await result.json();
     } catch (error) {
-        console.error("Ocorreu um erro ao buscar os dados da coordenação.", error);
+        console.error("Erro ao fazer o fetch", error);
         return;
     }
 
@@ -20,12 +20,12 @@ async function searchCoordination() {
 }
 
 function renderCoordination(coordination) {
-        
+    var coordinationImg = document.querySelector("#coordination_img")
+    var coordinationName = document.querySelector("#coordination_name")
+    try {
         var image = coordination.at(-1).image
         var name = coordination.at(-1).nome
         var genero = coordination.at(-1).genero
-        var coordinationImg = document.querySelector("#coordination_img")
-        var coordinationName = document.querySelector("#coordination_name")
         coordinationImg.style = "width: 85%; height: 85%;"
         coordinationImg.src = image
         if (genero == "feminino") {
@@ -33,4 +33,8 @@ function renderCoordination(coordination) {
         } else {
             coordinationName.innerHTML = "Prof. Dr. " + name
         }
+    } catch (error) {
+        coordinationName.innerHTML = "Erro ao carregar os dados do coordenador."
+        return;
+    }
 }

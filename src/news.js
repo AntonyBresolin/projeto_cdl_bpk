@@ -21,21 +21,32 @@ async function searchNews() {
 }
 
 function renderNews(news) {
-    news.slice(-6).reverse()
-    .forEach(function(news) {
-        var image = news.image;
-        var links = news.link;
+    if(news.length > 0){
+        news.slice(-6).reverse()
+            .forEach(function (news) {
+                var image = news.image;
+                var links = news.link;
 
-        var newsImg = document.querySelector("#redes_img");
-        var link = document.createElement("a");
-        link.href = links;
-        link.target = "_blank";
-        
-        var img = document.createElement("img");
-        img.src = image;
-        img.alt = "Imagem da noticia";
+                var newsImg = document.querySelector("#redes_img");
+                var link = document.createElement("a");
+                link.href = links;
+                link.target = "_blank";
 
-        link.appendChild(img);
-        newsImg.appendChild(link);
-    });
+                var img = document.createElement("img");
+                img.src = image;
+                img.alt = "Imagem da noticia";
+                link.appendChild(img);
+                newsImg.appendChild(link);
+            });
+        }
+    else{
+        var news = document.getElementById("redes_img")
+        news.classList.add("news-none")
+        news.classList.remove("redes-img");
+
+        var h2 = document.createElement('h2');
+        h2.textContent = "Nenhuma notícia encontrada";
+
+        news.appendChild(h2);
+    }
 }

@@ -19,7 +19,7 @@ function renderCourses(cursos) {
     const coursesAvaliable = document.querySelector('#cursos_select');
     const optionsCourses = document.querySelector('#courses_avaliable');
     const footerCourses = document.querySelector('#footer_courses');
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < 8; i++) {
         var nome = cursos[i].nome_curso;
         const option = document.createElement('option');
         const course = document.createElement('li');

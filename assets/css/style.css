@@ -330,7 +330,19 @@ span{
 
 /* SEGUNDA PAGINA */
 
+.news-none{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    background-color: rgba(18, 23, 28, 0.169)
+}
 
+.news-none h2{
+    text-align: center;
+    color: black;
+}
 .redes{
     margin-top: 10%;
     /* DETERMINA UM FUNDO DIFERENTE (BRANCO) */
