@@ -23,9 +23,9 @@ function renderCoordination(coordination) {
     var coordinationImg = document.querySelector("#coordination_img")
     var coordinationName = document.querySelector("#coordination_name")
     try {
-        var image = coordination.at(-1).image
-        var name = coordination.at(-1).nome
-        var genero = coordination.at(-1).genero
+        var image = coordination[0].image
+        var name = coordination[0].nome
+        var genero = coordination[0].genero
         coordinationImg.style = "width: 85%; height: 85%;"
         coordinationImg.src = image
         if (genero == "feminino") {
