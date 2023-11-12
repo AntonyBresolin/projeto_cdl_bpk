@@ -22,10 +22,9 @@ async function searchNews() {
 
 function renderNews(news) {
     if(news.length > 0){
-        news.slice(-6).reverse()
-            .forEach(function (news) {
-                var image = news.image;
-                var links = news.link;
+        for (let i = 0; i < 6; i++) {
+                var image = news[i].image;
+                var links = news[i].link;
 
                 var newsImg = document.querySelector("#redes_img");
                 var link = document.createElement("a");
@@ -37,7 +36,7 @@ function renderNews(news) {
                 img.alt = "Imagem da noticia";
                 link.appendChild(img);
                 newsImg.appendChild(link);
-            });
+            }
         }
     else{
         var news = document.getElementById("redes_img")
