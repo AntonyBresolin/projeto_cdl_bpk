@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 async function searchCourses() {
     try {
-        var result = await fetch('https://660q5f5r.api.sanity.io/v2021-10-21/data/query/production?query=%0A*%5B_type+%3D%3D+%22cursos%22%5D%7B%0A++nome_curso%0A%7D&perspective=published', {
+        var result = await fetch('https://660q5f5r.api.sanity.io/v2021-10-21/data/query/production?query=%0A*%5B_type+%3D%3D+%22cursos%22%5D%7C+order%28_createdAt+desc%29%7B%0A++nome_curso%0A%7D&perspective=published', {
             method: 'get',
         })
         var json = await result.json();
