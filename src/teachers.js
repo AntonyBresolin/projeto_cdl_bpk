@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 async function searchTeachers() {
     try {
-        var result = await fetch("https://660q5f5r.api.sanity.io/v2021-10-21/data/query/production?query=*%5B_type+%3D%3D+%22professor%22%5D%7C+order%28_createdAt+desc%29%7B%0A++nome%2C+%22image%22%3A+imagem.asset-%3Eurl%2C+disciplina%0A%7D", {
+        var result = await fetch("https://660q5f5r.api.sanity.io/v2021-10-21/data/query/production?query=*%5B_type+%3D%3D+%22professor%22%5D%7C+order%28_updatedAt+desc%29%7B%0A++nome%2C+%22image%22%3A+imagem.asset-%3Eurl%2C+disciplina%0A%7D", {
             method: 'get',
         });
 
