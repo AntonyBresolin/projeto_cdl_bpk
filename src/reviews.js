@@ -94,6 +94,11 @@ function renderReviews(avaliacoes) {
                 star.className = "fas fa-star";
                 boxEstrelaDiv.appendChild(star);
             }
+            for(let i = 0; i < 5 - nota; i++){
+                let emptyStar = document.createElement('i');
+                emptyStar.className = "far fa-star";
+                boxEstrelaDiv.appendChild(emptyStar);
+            }
         } else {
             nota = (nota - 1) / 2;
             for (let i = 0; i < nota; i++) {
