@@ -1,7 +1,9 @@
+// Função padrão para carregar o script apenas quando o DOM estiver pronto
 document.addEventListener("DOMContentLoaded", function () {
     searchCoordination();
 });
 
+// Função para buscar os dados dos professores dentro do Sanity
 async function searchCoordination() {
 
     try {
@@ -19,6 +21,7 @@ async function searchCoordination() {
     renderCoordination(coordination);
 }
 
+// Função para renderizar os dados dos professores na página pegando apenas o primeiro coordenador ou seja, o último criado
 function renderCoordination(coordination) {
     var coordinationImg = document.querySelector("#coordination_img")
     var coordinationName = document.querySelector("#coordination_name")

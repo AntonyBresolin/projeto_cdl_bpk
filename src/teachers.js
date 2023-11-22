@@ -1,10 +1,9 @@
-//
-
+// Função padrão para carregar o script apenas quando o DOM estiver pronto
 document.addEventListener("DOMContentLoaded", function () {
     searchTeachers();
 });
 
-
+// Função para buscar os dados dos professores dentro do Sanity
 async function searchTeachers() {
     try {
         var result = await fetch("https://660q5f5r.api.sanity.io/v2021-10-21/data/query/production?query=*%5B_type+%3D%3D+%22professor%22%5D%7C+order%28_updatedAt+desc%29%7B%0A++nome%2C+%22image%22%3A+imagem.asset-%3Eurl%2C+disciplina%0A%7D", {
@@ -22,9 +21,7 @@ async function searchTeachers() {
     renderTeachers(professores);
 }
 
-
-// Path: src/teachers.js
-
+// Função para renderizar os dados dos professores na página com verificação de dados para remover o carrossel caso não tenha professores
 function renderTeachers(professores) {
 
     if (professores.length < 1) {

@@ -1,16 +1,18 @@
 var form = document.querySelector("#form_email")
 
+// Função para pegar os dados enviados no form de contato
 form.addEventListener("submit", (e) => {
     e.preventDefault();
-    var name = document.querySelector("#name").value
-    var email = document.querySelector("#email").value
-    var curso = document.querySelector("#cursos_select").value
+    var name = document.querySelector("#name")
+    var email = document.querySelector("#email")
+    var curso = document.querySelector("#cursos_select")
+    saveEmails(name.value, email.value, curso.value);
     name.value = ""
     email.value = ""
-    curso.value = ""
-    saveEmails(name, email, curso);
+    curso.value = "selecione"
 });
 
+// Função para fazer verificação de campos vazios e enviar email usando mailto
 function saveEmails(name, email, curso) {
     if (curso === "selecione") {
         alert("Selecione um curso")
@@ -28,24 +30,4 @@ function saveEmails(name, email, curso) {
         alert("Ocorreu um erro ao salvar os dados do form.", error);
         return;
     }
-
-
-
-
-
-}
-
-
-
-
-function sendMail(event){
-    event.preventDefault();
-    const destinatario = "centrodelinguas@bpkedu.com";
-    const assunto = `Contato pelo Site`;
-    const select = document.querySelector('#cursos-select');
-    const option = select.options[select.selectedIndex].value;
-    const mensagem =
-        `Requisitante: ${document.getElementById('name').value}\nEmail: ${document.getElementById('mail').value}\nOlá, desejo tirar dúvidas sobre o curso de ${option.textContent}`;
-
-    window.location.href = `mailto:${destinatario}?subject=${encodeURIComponent(assunto)}&body=${encodeURIComponent(mensagem)}`;
 }

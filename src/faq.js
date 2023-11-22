@@ -1,7 +1,9 @@
+// Função padrão para carregar o script apenas quando o DOM estiver pronto
 document.addEventListener("DOMContentLoaded", function () {
     searchFaq();
 });
 
+// Função para buscar os dados do FAQ dentro do Sanity
 async function searchFaq() {
 
     try {
@@ -17,6 +19,8 @@ async function searchFaq() {
 
     renderFaqs(faqs);
 }
+
+// Função para renderizar os dados do FAQ na página com verificação de dados e criação de todas as perguntas e respostas do FAQ
 function renderFaqs(faqs) {
     if (faqs.length < 1) {
         const title = document.querySelector("#layout")
@@ -53,6 +57,7 @@ function renderFaqs(faqs) {
     accordionEvent();
 }
 
+// Função para criar o evento de clique nos botões de pergunta e resposta do FAQ
 function accordionEvent() {
     const answers = document.querySelectorAll(".accordion");
 

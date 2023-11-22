@@ -1,7 +1,9 @@
+// Função padrão para carregar o script apenas quando o DOM estiver pronto
 document.addEventListener("DOMContentLoaded", function () {
     searchNews();
 });
 
+// Função para buscar os dados das noticias dentro do Sanity
 async function searchNews() {
 
     try {
@@ -20,6 +22,7 @@ async function searchNews() {
     renderNews(news);
 }
 
+// Função para renderizar os dados das noticias na página com verificação de dados e pegando apenas as 6 primeiras noticias
 function renderNews(news) {
     if (news.length < 1) {
         var news = document.getElementById("redes_img")
