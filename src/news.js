@@ -21,7 +21,17 @@ async function searchNews() {
 }
 
 function renderNews(news) {
-    if(news.length > 0){
+    if (news.length < 1) {
+        var news = document.getElementById("redes_img")
+        news.classList.add("news-none")
+        news.classList.remove("redes-img");
+
+        var h2 = document.createElement('h2');
+        h2.textContent = "Nenhuma notícia encontrada";
+
+        news.appendChild(h2);
+        return
+    }
         for (let i = 0; i < 6; i++) {
                 var image = news[i].image;
                 var links = news[i].link;
@@ -37,15 +47,4 @@ function renderNews(news) {
                 link.appendChild(img);
                 newsImg.appendChild(link);
             }
-        }
-    else{
-        var news = document.getElementById("redes_img")
-        news.classList.add("news-none")
-        news.classList.remove("redes-img");
-
-        var h2 = document.createElement('h2');
-        h2.textContent = "Nenhuma notícia encontrada";
-
-        news.appendChild(h2);
-    }
 }
